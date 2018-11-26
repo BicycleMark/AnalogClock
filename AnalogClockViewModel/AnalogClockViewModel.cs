@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace AnalogClockViewModel 
+namespace ViewModel 
 {
     public class AnalogClockViewModel : INotifyPropertyChanged
     {
@@ -19,15 +19,14 @@ namespace AnalogClockViewModel
             get { return time; }
             set {   time = value;
                     setAngles();
-                    NotifyPropertyChanged();
-
+                   // NotifyPropertyChanged();
                 }
         }
 
         private double angleHours;
         public double AngleHours
         {
-            protected get { return angleHours; }
+            get { return angleHours; }
             set
             {
                 angleHours = value;
@@ -38,8 +37,8 @@ namespace AnalogClockViewModel
         private double angleMinutes;
         public double AngleMinutes
         {
-            protected get { return angleMinutes; }
-            set
+            get { return angleMinutes; }
+            protected set
             {
                 angleMinutes = value;
                 NotifyPropertyChanged();
@@ -49,35 +48,40 @@ namespace AnalogClockViewModel
         private double angleSeconds;
         public double AngleSeconds
         {
-            protected get { return angleSeconds; }
-            set
+            get { return angleSeconds; }
+            protected set
             {
                 angleSeconds = value;
                 NotifyPropertyChanged();
             }
         }
 
+        const double degPerSecond = 360/60;
         public int Seconds {        get { return    seconds; }
-                            private set {           seconds = value; 
+                            private set {           seconds = value;
+                AngleSeconds = seconds *  degPerSecond;
                                                     NotifyPropertyChanged(); 
                                         } 
                             }
+        const double degPerMinute = 360 / 60;
         public int Minutes
         {
             get { return minutes; }
             private set
             {
                 minutes = value;
+                AngleMinutes = minutes * degPerMinute + (seconds/60)*degPerMinute;
                 NotifyPropertyChanged();
             }
         }
-
+        const double degPerHour = 360 / 12;
         public int Hours
         {
             get { return hours; }
             private set
             {
                 hours = value;
+                AngleHours = hours * degPerHour + (minutes/60)* degPerHour + (seconds*degPerHour)/(60*60) ;
                 NotifyPropertyChanged();
             }
         }
