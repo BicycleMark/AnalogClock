@@ -6,7 +6,7 @@ namespace ViewModel
 {
     public class AnalogClockViewModel : INotifyPropertyChanged
     {
-        private int seconds, minutes, hours;
+        double  seconds, minutes, hours;
         public AnalogClockViewModel()
         {
             seconds = minutes = hours = 0;
@@ -57,14 +57,14 @@ namespace ViewModel
         }
 
         const double degPerSecond = 360/60;
-        public int Seconds {        get { return    seconds; }
+        public double Seconds {        get { return    seconds; }
                             private set {           seconds = value;
                 AngleSeconds = seconds *  degPerSecond;
                                                     NotifyPropertyChanged(); 
                                         } 
                             }
         const double degPerMinute = 360 / 60;
-        public int Minutes
+        public double Minutes
         {
             get { return minutes; }
             private set
@@ -75,7 +75,7 @@ namespace ViewModel
             }
         }
         const double degPerHour = 360 / 12;
-        public int Hours
+        public double Hours
         {
             get { return hours; }
             private set
