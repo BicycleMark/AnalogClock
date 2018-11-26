@@ -6,10 +6,17 @@ namespace ViewModel
 {
     public class AnalogClockViewModel : INotifyPropertyChanged
     {
+        const double degPerSecond = 360 / 60;
+        const double degPerMinute = 360 / 60;
+        const double degPerHour = 360 / 12;
+        const double secsPerMin = 60.0;
+        const double minPerHr = 60.0;
+
         double  seconds, minutes, hours;
         public AnalogClockViewModel()
         {
             seconds = minutes = hours = 0;
+            Time = DateTime.Now;
 
         }
        
@@ -56,14 +63,14 @@ namespace ViewModel
             }
         }
 
-        const double degPerSecond = 360/60;
+
         public double Seconds {        get { return    seconds; }
                             private set {           seconds = value;
                 AngleSeconds = seconds *  degPerSecond;
                                                     NotifyPropertyChanged(); 
                                         } 
                             }
-        const double degPerMinute = 360 / 60;
+
         public double Minutes
         {
             get { return minutes; }
@@ -74,14 +81,15 @@ namespace ViewModel
                 NotifyPropertyChanged();
             }
         }
-        const double degPerHour = 360 / 12;
+
+        
         public double Hours
         {
             get { return hours; }
             private set
             {
                 hours = value;
-                AngleHours = hours * degPerHour + (minutes/60)* degPerHour + (seconds*degPerHour)/(60*60) ;
+                AngleHours = hours * degPerHour + (minutes/minPerHr)* degPerHour + (seconds*degPerHour)/(secsPerMin*minPerHr) ;
                 NotifyPropertyChanged();
             }
         }

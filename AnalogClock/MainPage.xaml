@@ -1,7 +1,48 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:AnalogClock" x:Class="AnalogClock.MainPage">
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:AnalogClock" x:Class="AnalogClock.MainPage"
+             xmlns:vm="clr-namespace:ViewModel;assembly=AnalogClockViewModel" 
+             >
+   <ContentPage.BindingContext>  
+        <vm:AnalogClockViewModel />  
+    </ContentPage.BindingContext>  
+    <Grid Margin="35">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+          
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="2"
+               FontSize="Large" 
+               HorizontalOptions="CenterAndExpand">Analog Clock
+        </Label>
+        <Label Grid.Row="1" HorizontalTextAlignment="End">Hr:</Label>
+        <Label Grid.Row="2" HorizontalTextAlignment="End">Min:</Label>
+        <Label Grid.Row="3" HorizontalTextAlignment="End">Sec:</Label>   
+        <Label Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Start" Text="{Binding Hours}"></Label>
+        <Label Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Start" Text="{Binding Minutes}"></Label>
+        <Label Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="Start" Text="{Binding Seconds}"></Label> 
+        <Label Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="Start" Text="{Binding AngleHours}"></Label>
+        <Label Grid.Row="2" Grid.Column="2" HorizontalTextAlignment="Start" Text="{Binding AngleMinutes}"></Label>
+        <Label Grid.Row="3" Grid.Column="2" HorizontalTextAlignment="Start" Text="{Binding AngleSeconds}"></Label>
+        
+        
+    </Grid>
+    
 </ContentPage>

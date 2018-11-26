@@ -45,7 +45,7 @@ namespace NUnitTests
             Assert.AreNotEqual(vm, null);
             //Assert.AreEqual(true, (vm.AngleHours == 0 || vm.AngleHours == 360));
             //Assert.AreEqual(true, (vm.AngleMinutes == 180));
-            Assert.AreEqual(true, (vm.Seconds == 180 ));
+            Assert.AreEqual(true, (vm.Minutes == 183 ));
         }
 
     }
