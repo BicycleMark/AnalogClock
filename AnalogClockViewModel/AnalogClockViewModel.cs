@@ -11,14 +11,24 @@ namespace ViewModel
         const double degPerHour = 360 / 12;
         const double secsPerMin = 60.0;
         const double minPerHr = 60.0;
-
         double  seconds, minutes, hours;
+        System.Timers.Timer tmr;
         public AnalogClockViewModel()
         {
             seconds = minutes = hours = 0;
             Time = DateTime.Now;
-
+            tmr = new System.Timers.Timer();
+            tmr.Elapsed += Tmr_Elapsed;
+            tmr.Interval = 1000;
+            tmr.Start();
+            
         }
+
+        void Tmr_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Time = DateTime.Now;
+        }
+
        
         private DateTime time;
         public DateTime Time
@@ -26,7 +36,7 @@ namespace ViewModel
             get { return time; }
             set {   time = value;
                     setAngles();
-                   // NotifyPropertyChanged();
+                    NotifyPropertyChanged();
                 }
         }
 

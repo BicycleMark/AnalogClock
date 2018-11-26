@@ -9,7 +9,7 @@
     </ContentPage.BindingContext>  
     <Grid Margin="35">
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition />
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -30,7 +30,12 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.ColumnSpan="2"
                FontSize="Large" 
-               HorizontalOptions="CenterAndExpand">Analog Clock
+               HorizontalOptions="CenterAndExpand" Font.TextColor="Blue">Analog Clock
+        </Label>
+        <Label Grid.Row="0" Grid.Column="2"
+               FontSize="Large" 
+               Font.TextColor="Blue"
+               HorizontalOptions="StartAndExpand" Text="{Binding Time}">
         </Label>
         <Label Grid.Row="1" HorizontalTextAlignment="End">Hr:</Label>
         <Label Grid.Row="2" HorizontalTextAlignment="End">Min:</Label>
