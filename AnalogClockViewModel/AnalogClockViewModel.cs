@@ -22,7 +22,6 @@ namespace AnalogClockViewModel
                     NotifyPropertyChanged();
 
                 }
-
         }
 
         private double angleHours;
@@ -58,14 +57,36 @@ namespace AnalogClockViewModel
             }
         }
 
+        public int Seconds {        get { return    seconds; }
+                            private set {           seconds = value; 
+                                                    NotifyPropertyChanged(); 
+                                        } 
+                            }
+        public int Minutes
+        {
+            get { return minutes; }
+            private set
+            {
+                minutes = value;
+                NotifyPropertyChanged();
+            }
+        }
 
-
+        public int Hours
+        {
+            get { return hours; }
+            private set
+            {
+                hours = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         private void setAngles()
         {
-
-
-            
+            Seconds = time.Second;
+            Minutes = time.Minute;
+            Hours   = time.Hour;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
