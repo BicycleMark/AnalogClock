@@ -98,7 +98,10 @@ namespace ViewModel
             get { return hours; }
             private set
             {
-                hours = value;
+                if (value > 12)
+                    hours = value - 12;
+                else
+                    hours = value;
                 AngleHours = hours * degPerHour + (minutes/minPerHr)* degPerHour + (seconds*degPerHour)/(secsPerMin*minPerHr) ;
                 NotifyPropertyChanged();
             }

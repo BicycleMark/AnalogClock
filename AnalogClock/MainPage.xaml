@@ -35,7 +35,7 @@
         <Label Grid.Row="0" Grid.Column="2"
                FontSize="Large" 
                Font.TextColor="Blue"
-               HorizontalOptions="StartAndExpand" Text="{Binding Time}">
+               HorizontalOptions="StartAndExpand" Text="{Binding Time,StringFormat='{0:t}'}">
         </Label>
         <Label Grid.Row="1" HorizontalTextAlignment="End">Hr:</Label>
         <Label Grid.Row="2" HorizontalTextAlignment="End">Min:</Label>
